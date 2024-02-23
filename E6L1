@@ -1,0 +1,45 @@
+/*Escreva um programa em Java que leia uma sequência de números inteiros fornecidos pelo usuário e calcule a média desses números.
+Em seguida, o programa deve imprimir a média calculada.
+Entrada
+A entrada consiste em uma sequência de números inteiros, separados por espaço.
+Saída
+O programa deve imprimir a média dos números fornecidos, com duas casas decimais.*/
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
+        String input = scanner.nextLine();
+        Scanner numScanner = new Scanner(input);
+
+        
+        List<Integer> numeros = new ArrayList<>();
+
+        
+        while (numScanner.hasNextInt()) {
+            int numero = numScanner.nextInt();
+            numeros.add(numero);
+        }
+
+        
+        double soma = 0;
+        for (int numero : numeros) {
+            soma += numero;
+        }
+        double media = soma / numeros.size();
+
+       
+        System.out.printf("%.2f%n", media);
+
+        
+        scanner.close();
+        numScanner.close();
+    }
+}
+
+
