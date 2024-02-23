@@ -1,0 +1,30 @@
+/*Escreva um programa em Java que leia um número inteiro e verifique se ele é positivo, negativo ou zero.
+Em seguida, o programa deve imprimir uma mensagem indicando o resultado da verificação.
+Entrada
+O programa deve receber um único número inteiro.
+Saída
+O programa deve imprimir uma das seguintes mensagens, de acordo com o número lido:
+"POSITIVO" se o número for maior que zero.
+"NEGATIVO" se o número for menor que zero.
+"ZERO" se o número for igual a zero.*/
+
+import java.util.Scanner;
+
+public class Main{
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        if (n > 0){
+            System.out.println("POSITIVO");
+        } else if (n < 0){
+            System.out.println("NEGATIVO");
+        }else {
+            System.out.println("ZERO");
+        }
+        sc.close();
+    }
+}
+
