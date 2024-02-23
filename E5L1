@@ -1,0 +1,37 @@
+/*Escreva um programa em Java que leia uma sequência de números inteiros fornecidos pelo usuário e
+determine o maior e o menor número na lista. Em seguida, o programa deve imprimir o maior e o menor número encontrados.
+Entrada
+A entrada consiste em uma sequência de números inteiros, separados por espaço.
+Saída
+O programa deve imprimir duas linhas. A primeira linha deve conter o maior número encontrado na lista, e a segunda linha deve conter o menor número encontrado na lista.*/
+
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+
+        String[] numeros = input.nextLine().split(" ");
+
+        int maior = Integer.MIN_VALUE;
+        int menor = Integer.MAX_VALUE;
+
+        for (String numConv : numeros) {
+            int numero = Integer.parseInt(numConv);
+            if (numero > maior) {
+                maior = numero;
+            }
+            if (numero < menor) {
+                menor = numero;
+            }
+        }
+
+        System.out.println(maior);
+        System.out.println(menor);
+
+        input.close();
+    }
+}
