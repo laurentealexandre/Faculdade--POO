@@ -1,0 +1,55 @@
+/*Escreva um programa em Java que leia um número inteiro representando um dia da semana (1 para Domingo,
+2 para Segunda-feira, ..., 7 para Sabado) e exiba o nome do dia correspondente.
+Caso o número fornecido esteja fora do intervalo de 1 a 7, o programa deve exibir "Dia inválido". Utilize a estrutura condicional
+Switch Case para resolução do exercício.
+Não use acentos nos nomes dos dias.
+Entrada
+O programa deve receber um único número inteiro representando o dia da semana.
+Saída
+O programa deve imprimir o nome do dia da semana correspondente ou "Dia invalido" se o número estiver fora do intervalo.*/
+
+import java.util.Scanner;
+public class Main{
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        int dia = sc.nextInt();
+
+        switch (dia) {
+            case 1:
+                System.out.println("Domingo");
+                break;
+
+            case 2:
+                System.out.println("Segunda-feira");
+                break;
+
+            case 3:
+                System.out.println("Terça-feira");
+                break;
+
+            case 4:
+                System.out.println("Quarta-feira");
+                break;
+
+            case 5:
+                System.out.println("Quinta-feira");
+                break;
+
+            case 6:
+                System.out.println("Sexta-feira");
+                break;
+
+            case 7:
+                System.out.println("Sabado");
+                break;
+
+            default:
+                System.out.println("Dia invalido");
+
+        }
+
+        sc.close();
+    }
+}
