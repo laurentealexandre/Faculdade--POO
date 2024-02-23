@@ -1,3 +1,9 @@
+/*Faça um programa em Java que solicite ao usuário que insira as notas de três provas (P1, P2 e P3) de um aluno e calcule a média
+aritmética dessas notas. Em seguida, o programa deve exibir a média calculada na tela.
+Entrada.O programa deve receber três números reais, representando as notas das provas P1, P2 e P3, respectivamente.
+ As notas estão no intervalo de 0 a 10.
+Saída. O programa deve imprimir a média aritmética das três notas, com duas casas decimais.*/
+
 import java.util.Scanner;
 
 public class Main {
