@@ -1,0 +1,35 @@
+/*Um palíndromo é uma palavra, frase, número ou outra sequência de caracteres que permanece a mesma quando lida de
+trás para frente. Por exemplo, "radar" e "arara" são palíndromos.
+Escreva um programa em Java que verifique se uma palavra fornecida pelo usuário é um palíndromo ou não.
+Ignore espaços em branco e diferenciação entre maiúsculas e minúsculas ao determinar se uma palavra é um palíndromo.
+Entrada
+O programa deve receber uma única palavra como entrada.
+Saída
+O programa deve imprimir "SIM" se a palavra for um palíndromo e "NAO" caso contrário.*/
+
+import java.util.Scanner;
+
+public class Main{
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        String palavra = sc.nextLine();
+
+        palavra = palavra.replaceAll("\\s+", "").toLowerCase();
+
+        boolean palindromo = true;
+        for (int i = 0; i < palavra.length() / 2; i++){
+            if (palavra.charAt(i) != palavra.charAt(palavra.length() - i - 1)){
+                palindromo = false;
+                break;
+            }
+        }
+        if (palindromo){
+            System.out.println("SIM");
+        }else {
+            System.out.println("NÃO");
+        }
+        sc.close();
+    }
+}
