@@ -1,0 +1,62 @@
+/*Escreva um programa em Java que leia uma lista de palavras fornecida pelo usuário e verifique se cada palavra é um palíndromo ou
+não. Uma palavra é um palíndromo se permanece a mesma quando lida de trás para frente.
+Ignore espaços em branco e diferenciação entre maiúsculas e minúsculas ao determinar se uma palavra é um palíndromo.
+Entrada
+A entrada consiste em várias linhas, onde cada linha contém uma palavra.
+Saída
+Para cada palavra na entrada, o programa deve imprimir "SIM" se a palavra for um palíndromo e "NAO" caso contrário, em uma nova linha.*/
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Loop para processar cada linha de entrada
+        while (scanner.hasNextLine()) {
+            String palavra = scanner.nextLine().trim(); // Lê a próxima linha e remove espaços em branco extras
+
+            // Verifica se a palavra é um palíndromo
+            if (isPalindrome(palavra)) {
+                System.out.println("SIM");
+            } else {
+                System.out.println("NAO");
+            }
+        }
+
+        scanner.close();
+    }
+
+    // Método para verificar se uma palavra é um palíndromo
+    private static boolean isPalindrome(String palavra) {
+        // Converte a palavra para minúsculas para ignorar a diferenciação entre maiúsculas e minúsculas
+        palavra = palavra.toLowerCase();
+
+        int i = 0;
+        int j = palavra.length() - 1;
+
+        // Itera sobre a palavra, comparando os caracteres da frente para trás
+        while (i < j) {
+            // Ignora espaços em branco
+            if (palavra.charAt(i) == ' ') {
+                i++;
+                continue;
+            }
+            if (palavra.charAt(j) == ' ') {
+                j--;
+                continue;
+            }
+
+            // Verifica se os caracteres correspondentes são iguais
+            if (palavra.charAt(i) != palavra.charAt(j)) {
+                return false; // Se forem diferentes, não é um palíndromo
+            }
+
+            i++;
+            j--;
+        }
+
+        return true; // Se chegarmos até aqui, a palavra é um palíndromo
+    }
+}
