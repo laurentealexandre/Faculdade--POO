@@ -1,0 +1,42 @@
+/*Escreva um programa em Java que conte o número de vogais e consoantes em uma frase fornecida pelo usuário.
+Considere apenas letras do alfabeto inglês (maiúsculas e minúsculas). Ignore espaços em branco, números e outros caracteres.
+Considere as vogais: A, E, I, O, U (maiúsculas e minúsculas). Todas as outras letras são consideradas consoantes.
+Certifique-se de tratar adequadamente as letras maiúsculas e minúsculas na contagem.
+Entrada
+A entrada consiste em uma única frase fornecida pelo usuário.
+Saída
+O programa deve imprimir duas linhas. A primeira linha deve conter o número de vogais na frase e a segunda linha deve conter o número de consoantes na frase.*/
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String frase = scanner.nextLine();
+
+        int vogais = 0;
+        int consoantes = 0;
+
+        frase = frase.toLowerCase();
+
+        for (int i = 0; i < frase.length(); i++) {
+            char ch = frase.charAt(i);
+
+            if (Character.isLetter(ch)) {
+
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vogais++;
+                } else {
+                    consoantes++;
+                }
+            }
+        }
+
+        System.out.println(vogais);
+        System.out.println(consoantes);
+
+        scanner.close();
+    }
+}
