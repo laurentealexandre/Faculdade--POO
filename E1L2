@@ -1,0 +1,71 @@
+/* Você deve implementar uma classe em Java chamada Carro que represente um veículo. Esta classe deve conter os seguintes atributos:
+marca (String): representando a marca do carro.
+modelo (String): representando o modelo do carro.
+ano (int): representando o ano de fabricação do carro.
+cor (String): representando a cor do carro.
+Além disso, implemente um método chamado exibirInformacoes() que exiba as informações do carro no seguinte formato:
+Marca: [marca]
+Modelo: [modelo]
+Ano: [ano]
+Cor: [cor]
+Você deve implementar um programa principal (Main) que irá criar dois objetos da classe Carro com diferentes valores para os atributos. O programa deve ler os valores de marca, modelo, ano e cor para cada carro da entrada padrão e então chamará o método exibirInformacoes() para exibir as informações de cada carro.
+IMPORTANTE: as duas classes devem estar juntas no mesmo arquivo!
+Entrada
+A entrada contém quatro linhas para cada carro. A primeira linha contém a marca do carro, a segunda linha contém o modelo, a terceira linha contém o ano de fabricação e a quarta linha contém a cor. 
+Saída
+A saída consiste nas informações dos carros, conforme especificado pelo método exibirInformacoes()
+import java.util.Scanner; */
+
+class Carro {
+
+    public String marca;
+    public String modelo;
+    public int ano;
+    public String cor;
+
+    public Carro(String marca, String modelo, int ano, String cor) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.cor = cor;
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano: " + ano);
+        System.out.println("Cor: " + cor);
+    }
+}
+public class Main {
+    public static void main (String[]args){
+        Scanner sc = new Scanner(System.in);
+
+        String marca1 = sc.nextLine();
+
+        String modelo1 = sc.nextLine();
+
+        int ano1 = Integer.parseInt(sc.nextLine());
+
+        String cor1 = sc.nextLine();
+
+        Carro carro1 = new Carro(marca1, modelo1, ano1, cor1);
+
+        String marca2 = sc.nextLine();
+
+        String modelo2 = sc.nextLine();
+
+        int ano2 = Integer.parseInt(sc.nextLine());
+
+        String cor2 = sc.nextLine();
+
+        Carro carro2 = new Carro(marca2, modelo2, ano2, cor2);
+
+        carro1.exibirInformacoes();
+
+        carro2.exibirInformacoes();
+
+        sc.close();
+
+    }
+}
