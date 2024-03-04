@@ -1,0 +1,78 @@
+/*Você deve implementar uma classe em Java chamada Peixe que represente um peixe.
+Esta classe deve conter os seguintes atributos:
+nome (String): representando o nome do peixe.
+especie (String): representando a espécie do peixe.
+cor (String): representando a cor do peixe.
+tamanho (double): representando o tamanho do peixe em centímetros.
+idade (int): representando a idade do peixe em meses.
+Além disso, implemente métodos de comportamento na classe Peixe:
+nadando(): Este método simula o peixe nadando, exibindo uma mensagem no console.
+comer(): Este método simula o peixe se alimentando, exibindo uma mensagem no console.
+dormir(): Este método simula o peixe dormindo, exibindo uma mensagem no console.
+tomarBanho(): Este método simula o peixe tomando banho, exibindo uma mensagem no console.
+Implemente o método toString() na classe Peixe para retornar uma representação textual do objeto com todas as informações do peixe formatadas.
+IMPORTANTE: as duas classes devem estar juntas no mesmo arquivo!
+IMPORTANTE: não use palavras acentuadas!
+Entrada
+A entrada consiste em cinco linhas. Cada linha contém informações sobre um peixe:
+O nome do peixe.
+A espécie do peixe.
+A cor do peixe.
+O tamanho do peixe em centímetros.
+A idade do peixe em meses.
+Saída
+A saída deve conter as informações do peixe chamando o método toString() e também deve chamar os métodos de comportamento (nadando(), comer(), dormir() e tomarBanho()), conforme especificado no enunciado. */
+
+import java.util.Scanner;
+
+class Peixe{
+
+    public String nome;
+    public String especie;
+    public String cor;
+    public double tamanho;
+    public int idade;
+
+    public Peixe (String nome, String especie, String cor, double tamanho, int idade){
+
+        this.nome = nome;
+        this.especie = especie;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.idade =  idade;
+    }
+    public String toString(){
+        return "Nome: " + nome + " " + "|" + " " +
+        "Especie: " + especie + " " + "|" + " " +
+        "Cor: " + cor + " " + "|" + " " +
+        "Tamanho: " + tamanho + " cm" + " " + "|" + " " +
+        "Idade: " + idade + " meses";
+
+    }
+    public void comportamento(){
+        System.out.println("\n" + nome + " esta nadando.");
+        System.out.println(nome + " esta se alimentando.");
+        System.out.println(nome + " esta dormindo.");
+        System.out.println(nome + " esta tomando banho.");
+    }
+
+}
+public class Main{
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        String nome1 = sc.nextLine();
+        String especie1 = sc.nextLine();
+        String cor1 = sc.nextLine();
+        double tamanho1 = Double.parseDouble(sc.nextLine());
+        int idade1 = Integer.parseInt(sc.nextLine());
+
+        Peixe peixe1 = new Peixe(nome1, especie1, cor1, tamanho1, idade1);
+
+        System.out.print(peixe1.toString());
+        peixe1.comportamento();
+
+        sc.close();
+    }
+
+}
