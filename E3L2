@@ -1,0 +1,89 @@
+/* Você deve implementar uma classe em Java chamada Livro que represente um livro. Esta classe deve conter os seguintes atributos:
+titulo (String): para armazenar o título do livro.
+autor (String): para armazenar o nome do autor do livro.
+anoPublicacao (int): para armazenar o ano de publicação do livro.
+genero (String): para armazenar o gênero do livro.
+Além disso, implemente um construtor na classe Livro que receba como parâmetros o título, o autor, o ano de publicação e o gênero do livro e atribua esses valores aos atributos correspondentes.
+Implemente o método exibirDetalhes() na classe Livro que exiba os detalhes do livro, como título, autor, ano de publicação e gênero.
+Adicione um método chamado isNovo() na classe Livro que retorna true se o livro foi publicado nos últimos 5 anos e false caso contrário.Observação: Para obter o ano atual, você pode utilizar o seguinte comando em Java:
+import java.time.Year;
+...
+int anoAtual = java.time.Year.now().getValue()
+IMPORTANTE: as duas classes devem estar juntas no mesmo arquivo!
+IMPORTANTE: não use palavras acentuadas!
+Entrada
+A entrada consiste em oito linhas. Cada linha contém informações sobre dois livros:
+Título do primeiro livro.
+Autor do primeiro livro.
+Ano de publicação do primeiro livro.
+Gênero do primeiro livro.
+Título do segundo livro.
+Autor do segundo livro.
+Ano de publicação do segundo livro.
+Gênero do segundo livro.
+Saída
+A saída deve conter os detalhes de cada livro, conforme especificado no enunciado, além de indicar se cada livro é novo ou não.*/
+
+import java.util.Scanner;
+import java.time.Year;
+
+class Livro {
+
+    String titulo;
+    String autor;
+    int anoPublicacao;
+    String genero;
+
+    public Livro(String titulo, String autor, int anoPublicacao, String genero) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anoPublicacao = anoPublicacao;
+        this.genero = genero;
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("Titulo: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Ano de Publicacao: " + anoPublicacao);
+        System.out.println("Genero: " + genero);
+    }
+
+    public boolean isNovo() {
+        int anoAtual = Year.now().getValue();
+        boolean novo = (anoAtual - anoPublicacao) <= 5;
+        if (novo){
+            System.out.println("Novo: Sim");
+        }
+        else{
+            System.out.println("Novo: Nao");
+        }
+        return novo;
+    }
+}
+    public class Main{
+        public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+
+            String titulo1 = sc.nextLine();
+            String autor1 = sc.nextLine();
+            int anoPublicacao1 = Integer.parseInt(sc.nextLine());
+            String genero1 = sc.nextLine();
+            Livro livro1 = new Livro(titulo1, autor1, anoPublicacao1, genero1);
+
+            String titulo2 = sc.nextLine();
+            String autor2 = sc.nextLine();
+            int anoPublicacao2 = Integer.parseInt(sc.nextLine());
+            String genero2 = sc.nextLine();
+            Livro livro2 = new Livro(titulo2, autor2, anoPublicacao2, genero2);
+
+            livro1.exibirDetalhes();
+            livro1.isNovo();
+            livro2.exibirDetalhes();
+            livro2.isNovo();
+
+            sc.close();
+        }
+
+    }
+
+
