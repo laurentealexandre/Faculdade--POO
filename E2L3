@@ -1,0 +1,87 @@
+/* Você foi designado para criar um sistema de conta bancária em Java. Sua tarefa é desenvolver uma classe chamada ContaBancaria que representa uma conta bancária simples. Esta classe deve conter informações sobre o saldo da conta, o número da conta e o nome do titular da conta.
+A classe ContaBancaria deve atender aos seguintes requisitos:
+A classe ContaBancaria deve ter três atributos privados: saldo (double), numeroConta (int) e titular (String).
+Implemente um construtor que inicialize o saldo, o número da conta e o nome do titular da conta.
+Implemente métodos públicos para depositar e sacar dinheiro da conta. O saldo não pode ser negativo.
+Implemente métodos públicos para acessar o saldo, o número da conta e o nome do titular da conta. No entanto, esses métodos devem apenas retornar os valores e não permitir modificações diretas desses atributos.
+Entrada
+A entrada consiste em diversas operações sobre a conta bancária. Cada operação é representada por uma linha que pode conter um dos seguintes comandos:
+"criar": para criar uma nova conta bancária. Em seguida, segue o número da conta (um inteiro) e o nome do titular da conta (uma string sem espaços).
+"depositar": para realizar um depósito na conta. Em seguida, segue o número da conta (um inteiro) e o valor a ser depositado (um número real).
+"sacar": para realizar um saque na conta. Em seguida, segue o número da conta (um inteiro) e o valor a ser sacado (um número real).
+"saldo": para consultar o saldo da conta. Em seguida, segue o número da conta (um inteiro).
+Saída
+Para cada operação "saldo", imprima uma linha contendo o saldo atual da conta bancária. Se a conta bancária não existir, imprima "Conta inexistente".*/
+
+import java.util.Scanner;
+
+class ContaBancaria{
+    private double saldo;
+    private int numeroConta;
+    private String titular;
+
+    public ContaBancaria (double saldo, int numeroConta, String titular){
+        this.saldo = saldo;
+        this.numeroConta = numeroConta;
+        this.titular = titular;
+    }
+    public void deposita (double valor){
+        saldo += valor;
+    }
+    public void saca (double valor){
+        if (saldo >= valor){
+            saldo -= valor;
+        }
+    }
+    public double getSaldo(){
+        return saldo;
+    }
+    public int getNumeroConta(){
+        return numeroConta;
+    }
+    public String getTitular(){
+        return titular;
+    }
+}
+
+public class Main {
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+        ContaBancaria conta = null;
+
+        while (sc.hasNextLine()){
+            String operacao = sc.next();
+
+            switch (operacao){
+                case "criar":
+                    int numeroConta = sc.nextInt();
+                    String titular = sc.next();
+                    double saldo = 0;
+                    conta = new ContaBancaria(saldo, numeroConta, titular);
+                    break;
+
+                case "depositar":
+                    sc.nextInt();
+                    double valorDeposito  = Double.parseDouble(sc.next());;
+                    conta.deposita(valorDeposito);
+                    break;
+
+                case "sacar":
+                    sc.nextInt();
+                    double valorSaque  = Double.parseDouble(sc.next());;
+                    conta.saca(valorSaque);
+                    break;
+
+                case "saldo":
+                    if (conta != null) {
+                        System.out.println(conta.getSaldo());
+                    } else {
+                        System.out.println("Conta inexistente");
+                    }
+                    break;
+
+            }
+        }
+        sc.close();
+    }
+}
