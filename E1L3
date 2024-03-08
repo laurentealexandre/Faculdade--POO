@@ -1,0 +1,95 @@
+/* Você foi contratado para desenvolver um sistema de biblioteca em Java. Sua tarefa é criar uma classe chamada Livro que representará os livros disponíveis na biblioteca. Cada livro possui um título, um autor, um ano de publicação e um identificador único.
+Além disso, você deve implementar uma classe Biblioteca que gerenciará os livros. Esta classe deve ter um atributo estático que mantém o número total de livros cadastrados na biblioteca.
+A classe Livro deve atender aos seguintes requisitos:
+A classe Livro deve ter quatro atributos privados: titulo (String), autor (String), anoPublicacao (int) e id (int).
+Implemente um construtor que inicialize o título, o autor, o ano de publicação e o ID do livro.
+Implemente métodos públicos para acessar e modificar o título, o autor e o ano de publicação do livro. O ID não deve ser modificável fora da lasse.
+A classe Biblioteca deve ter os seguintes requisitos:
+A classe Biblioteca deve ter um atributo estático chamado totalLivros para manter o número total de livros cadastrados na biblioteca.
+Implemente um método estático chamado adicionarLivro que recebe um objeto Livro como parâmetro e incrementa o número total de livros na biblioteca.
+Implemente um método estático chamado getTotalLivros que retorna o número total de livros cadastrados na biblioteca.
+Entrada
+A entrada consiste em diversos casos de teste. Cada caso de teste começa com um número inteiro N, que representa o número de operações a serem realizadas na biblioteca. As próximas N linhas contêm as operações. Cada operação é uma string que pode ser "cadastrar" ou "consultar".
+Se a operação for "cadastrar", em seguida, segue o título (uma string sem espaços), o autor (uma string sem espaços), o ano de publicação (um inteiro) e o ID (um inteiro) do livro a ser cadastrado, separados por espaços.
+Se a operação for "consultar", em seguida, segue o comando "total" para obter o total de livros cadastrados na biblioteca.
+Saída
+Para cada operação "consultar", imprima uma linha contendo o total de livros cadastrados na biblioteca.*/
+
+import java.util.Scanner;
+class Livro{
+   private String titulo;
+   private  String autor;
+   private  int anoPublicacacao;
+   private int id;
+
+    public Livro ( String titulo, String autor, int anoPublicacacao, int id){
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anoPublicacacao = anoPublicacacao;
+        this.id = id;
+    }
+
+    public String getTitulo(){
+        return titulo;
+    }
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
+    }
+    public String getTAutor(){
+        return autor;
+    }
+    public void setAutor(String autor){
+        this.autor = autor;
+    }
+    public int getAnoPublicacacao(){
+        return anoPublicacacao;
+    }
+    public void setAnoPublicacacao(int anoPublicacacao){
+        this.anoPublicacacao = anoPublicacacao;
+    }
+}
+
+class Biblioteca{
+    static int totalLivros;
+
+    public static void adicionarLivro (Livro livro){
+        totalLivros++;
+    }
+
+    static int getTotalLivros(){
+        return totalLivros;
+    }
+}
+
+public class Main{
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        while (sc.hasNext()){
+            int N = sc.nextInt();
+            sc.nextLine();
+
+            for (int i = 0; i < N; i++){
+                String operacao = sc.next();
+
+                if (operacao.equals("cadastrar")){
+                    String titulo = sc.next();
+                    String autor = sc.next();
+                    int anoPublicacao = sc.nextInt();
+                    int id = sc.nextInt();
+                    Livro livro = new Livro(titulo, autor, anoPublicacao, id);
+                    Biblioteca.adicionarLivro(livro);
+                }
+                else if (operacao.equals("consultar")){
+                    String comando = sc.next();
+                    if (comando.equals("total")){
+                        System.out.println(Biblioteca.getTotalLivros());
+                    }
+                }
+            }
+
+
+        }
+        sc.close();
+    }
+}
