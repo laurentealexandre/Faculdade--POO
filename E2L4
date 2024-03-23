@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+abstract class Veiculo {
+    protected double valor;
+    protected int anoFabricacao;    
+
+    public Veiculo(double valor, int anoFabricacao) {
+        this.valor = valor;
+        this.anoFabricacao = anoFabricacao;        
+    }    
+
+    public abstract double calcularImpostoAnual();
+}
+
+class Carro extends Veiculo {
+    private int numeroPortas;
+
+    public Carro(double valor, int anoFabricacao, int numeroPortas) {
+        super(valor, anoFabricacao);
+        this.numeroPortas = numeroPortas;
+    }
+
+    @Override
+    public double calcularImpostoAnual() {
+        double imposto = valor * 0.02;
+        if (anoFabricacao < 2010) {
+            double desconto = imposto * 0.1;
+            imposto -= desconto; 
+        }
+        return imposto;
+    }
+}
+
+class Moto extends Veiculo {
+    private int cilindradas;
+
+    public Moto(double valor, int anoFabricacao, int cilindradas) {
+        super(valor, anoFabricacao);
+        this.cilindradas = cilindradas;
+    }
+
+    @Override
+    public double calcularImpostoAnual() {
+        double imposto = valor * 0.02;
+        if (anoFabricacao > 2015) {
+            double acrescimo = imposto * 0.05;
+            imposto += acrescimo; 
+        }
+        return imposto;
+    }
+}
+
+class Caminhao extends Veiculo {
+    private int cargaMaxima;
+
+    public Caminhao(double valor, int anoFabricacao, int cargaMaxima) {
+        super(valor, anoFabricacao);
+        this.cargaMaxima = cargaMaxima;
+    }
+
+    @Override
+    public double calcularImpostoAnual() {
+        double imposto = valor * 0.02;
+        if (anoFabricacao > 2012) {
+            double acrescimo = imposto * 0.08;
+            imposto += acrescimo; 
+        }
+        return imposto;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            String tipoVeiculo = sc.next();
+            if (tipoVeiculo.equals("SAIR")) {
+                break;
+            }
+
+            double valor = sc.nextDouble();
+            int anoFabricacao = sc.nextInt();
+            
+            if (tipoVeiculo.equals("C")) {
+                int numeroPortas = sc.nextInt();            
+                Veiculo c1 = new Carro(valor, anoFabricacao, numeroPortas);
+                System.out.printf("%.2f\n", c1.calcularImpostoAnual());  
+            } else if (tipoVeiculo.equals("M")) {
+                int cilindradas = sc.nextInt();            
+                Veiculo m1 = new Moto(valor, anoFabricacao, cilindradas);
+                System.out.printf("%.2f\n", m1.calcularImpostoAnual()); 
+            } else {
+                int cargaMaxima = sc.nextInt();            
+                Veiculo ca1 = new Caminhao(valor, anoFabricacao, cargaMaxima);
+                System.out.printf("%.2f\n", ca1.calcularImpostoAnual()); 
+            }
+        }
+        sc.close();
+    }
+}
