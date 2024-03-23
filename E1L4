@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+abstract class Funcionario {
+    protected String nome;
+    protected int idade;
+    protected double salarioBase;
+
+    public Funcionario(String nome, int idade, double salarioBase) {
+        this.nome = nome;
+        this.idade = idade;
+        this.salarioBase = salarioBase;
+    }
+
+    public abstract double calcularSalario();
+}
+
+class Integral extends Funcionario {
+    private double bonusMensal;
+
+    public Integral(String nome, int idade, double salarioBase, double bonusMensal) {
+        super(nome, idade, salarioBase);
+        this.bonusMensal = bonusMensal;
+    }
+
+    @Override
+    public double calcularSalario() {
+        return salarioBase + bonusMensal;
+    }
+}
+
+class Parcial extends Funcionario {
+    private int hTrabMes;
+
+    public Parcial(String nome, int idade, double salarioBase, int hTrabMes) {
+        super(nome, idade, salarioBase);
+        this.hTrabMes = hTrabMes;
+    }
+
+    @Override
+    public double calcularSalario() {
+        return salarioBase + (hTrabMes * 10);
+    }
+}
+
+class Estagiario extends Funcionario {
+
+    public Estagiario(String nome, int idade) {
+        super(nome, idade, 0);
+    }
+
+    @Override
+    public double calcularSalario() {
+        return 0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            String tipoFuncionario = sc.next();
+            if (tipoFuncionario.equals("SAIR")) {
+                break;
+            }
+
+            String nome = sc.next();
+            int idade = sc.nextInt();
+
+            if (tipoFuncionario.equals("I")) {
+                double salarioBase = sc.nextDouble();
+                double bonusMensal = sc.nextDouble();
+                Funcionario f1 = new Integral(nome, idade, salarioBase, bonusMensal);
+                System.out.printf("%.2f\n", f1.calcularSalario()); // Use printf para formatar a saída com duas casas decimais
+            } else if (tipoFuncionario.equals("P")) {
+                double salarioBase = sc.nextDouble();
+                int hTrabMes = sc.nextInt();
+                Funcionario f2 = new Parcial(nome, idade, salarioBase, hTrabMes);
+                System.out.printf("%.2f\n", f2.calcularSalario());
+            } else {
+                Funcionario f3 = new Estagiario(nome, idade);
+                System.out.printf("%.2f\n", f3.calcularSalario());
+            }
+        }
+
+        sc.close();
+    }
+}
